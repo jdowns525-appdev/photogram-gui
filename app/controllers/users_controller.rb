@@ -33,7 +33,31 @@ class UsersController < ApplicationController
 
   #render({ :template => "user_templates/create.html.erb"})
 
-  redirect_to("/users")
+  next_url = "/users/" + a_new_user.username.to_s
+
+  redirect_to(next_url)
+  end
+
+  def update
+    #Parameters: {"input_username"=>"catherina", "modify_id"=>"98"}
+
+  the_id = params.fetch("modify_id")
+  matching_users = User.where({ :id => the_id })
+
+  the_user = matching_users.at(0)
+
+  username = params.fetch("input_username")
+
+  the_user.username = username
+
+  the_user.save
+
+  #render({ :template => "user_templates/update.html.erb"})
+
+  next_url = "/users/" + the_user.username.to_s
+
+  redirect_to(next_url)
+
   end
 
 end

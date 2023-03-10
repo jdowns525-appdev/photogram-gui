@@ -17,6 +17,7 @@ class PhotosController < ApplicationController
 
     @the_photo = matching_photos.at(0)
 
+
     render({ :template => "photo_templates/show.html.erb"})
   end
 
@@ -73,6 +74,24 @@ class PhotosController < ApplicationController
 
   #render({ :template => "photo_templates/update.html.erb" })
   next_url = "/photos/" + the_photo.id.to_s
+
   redirect_to(next_url)
+  end
+
+  def new_comment
+
+    photo_id = params.fetch("photo_id_query")
+    author_id = params.fetch("author_id_query")
+    comment_id = params.fetch("body_query")
+  
+    a_new_comment = Comment.new
+    a_new_comment.post_id = photo_id
+    a_new_comment.commenter_id = author_id
+    a_new_comment.body = comment_id
+  
+
+  render({ :template => "photo_templates/new_comment.html.erb" })
+
+
   end
 end
