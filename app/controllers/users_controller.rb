@@ -20,4 +20,20 @@ class UsersController < ApplicationController
   render({ :template => "user_templates/show.html.erb"})
     #end
   end
+
+  def create
+
+    #:Parameters {"input_username"=>"", "controller"=>"users", "action"=>"create"} permitted: false>
+
+    input_username = params.fetch("input_username")
+    a_new_user = User.new
+    a_new_user.username = input_username
+
+    a_new_user.save
+
+  #render({ :template => "user_templates/create.html.erb"})
+
+  redirect_to("/users")
+  end
+
 end
