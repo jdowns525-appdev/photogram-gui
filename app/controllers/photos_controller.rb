@@ -85,13 +85,16 @@ class PhotosController < ApplicationController
     comment_id = params.fetch("body_query")
   
     a_new_comment = Comment.new
-    a_new_comment.post_id = photo_id
-    a_new_comment.commenter_id = author_id
+    a_new_comment.id = photo_id
+    a_new_comment.author_id = author_id
     a_new_comment.body = comment_id
+
+    a_new_comment.save
   
 
-  render({ :template => "photo_templates/new_comment.html.erb" })
-
+  #render({ :template => "photo_templates/new_comment.html.erb" })
+  next_url = "/photos/" + a_new_comment.id.to_s
+  redirect_to(next_url)
 
   end
 end
