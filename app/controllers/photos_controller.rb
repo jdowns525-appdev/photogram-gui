@@ -32,6 +32,7 @@ class PhotosController < ApplicationController
 
     the_photo.destroy
 
-    render({ :template => "photo_templates/baii.html.erb"})
+    #render({ :template => "photo_templates/baii.html.erb"})
+    redirect_to("/photos")
   end
 end
