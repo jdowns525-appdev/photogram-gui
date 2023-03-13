@@ -77,10 +77,10 @@
   <input id="browser_photo_id" type="text" value="<%= @the_photo.id %>" name="photo_id_query">
 
   <label for="browser_author_id">Author ID</label>
-  <input id="<%= @the_photo.owner_id %>" type="text" name="author_id_query">
+  <input id="browser_author_id" type="text" name="author_id_query">
 
   <label for="browser_comment">Comment</label>
-  <textarea id="browser_comment" name="body_query" placeholder="<%= @the_photo.comments %>"></textarea>
+  <textarea id="browser_comment" name="body_query" placeholder="Enter comment"></textarea>
 
   <button>Add comment</button>
 </form>
